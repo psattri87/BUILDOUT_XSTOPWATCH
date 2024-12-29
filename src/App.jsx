@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const [time, setTime] = useState(65000);
+  const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
   const hour = Math.floor(time / 360000);
