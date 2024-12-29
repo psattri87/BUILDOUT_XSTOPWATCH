@@ -22,7 +22,8 @@ function App() {
     <div>
       <h1>Stopwatch</h1>
       <p>
-        Time: {hour}:{minute}:{second < 10 ? `0${second}` : second}
+        Time: {hour > 0 && `${hour}:`}
+        {minute}:{second < 10 ? `0${second}` : second}
       </p>
       <button onClick={() => setIsRunning(!isRunning)}>
         {isRunning ? "Stop" : "Start"}
