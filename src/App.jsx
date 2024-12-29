@@ -5,9 +5,9 @@ function App() {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
-  const hour = Math.floor(time / 360000);
-  const minute = Math.floor((time % 360000) / 6000);
-  const second = Math.floor((time % 6000)/ 100);
+  // const hour = Math.floor(time / 360000);
+  const minute = Math.floor(time / 6000);
+  const second = Math.floor((time /100)% 60);
 
   useEffect(() => {
     let intervalId;
@@ -22,7 +22,7 @@ function App() {
     <div>
       <h1>Stopwatch</h1>
       <p>
-        Time: {hour > 0 && `${hour}:`}
+        {/* Time: {hour > 0 && `${hour}:`} */}
         {minute}:{second < 10 ? `0${second}` : second}
       </p>
       <button onClick={() => setIsRunning(!isRunning)}>
