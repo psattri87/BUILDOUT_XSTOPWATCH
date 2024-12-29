@@ -6,7 +6,7 @@ function App() {
   const [isRunning, setIsRunning] = useState(false);
 
   // const hour = Math.floor(time / 360000);
-  const minute = Math.floor(time / 6000);
+  const minute = Math.floor((time / 6000) % 60);
   const second = Math.floor((time /100)% 60);
 
   useEffect(() => {
