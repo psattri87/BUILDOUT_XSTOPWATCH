@@ -8,7 +8,6 @@ function App() {
   const hour = Math.floor(time / 3600);
   const minute = Math.floor(time / 60) % 60;
   const second = Math.floor(time % 60);
-  console.log(minute, ":", second)
 
   useEffect(() => {
     let intervalId;
