@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [time, setTime] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+
+  const hour = Math.floor(time / 3600);
+  const minute = Math.floor((time / 60) % 60);
+  const second = Math.floor(time % 60);
+
+  useEffect(() => {
+    let intervalId;
+    if (isRunning) {
+      // setting time from 0 to 1 every second
+      intervalId = setInterval(() => setTime(time + 1), 1000);
+    }
+    return () => clearInterval(intervalId);
+  }, [isRunning, time]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+    <div>
+      <h1>Stopwatch</h1>
+      <p>
+        Time: {hour}:{minute}:{second < 10 ? `0${second}` : second}
       </p>
-    </>
-  )
+      <button onClick={() => setIsRunning(!isRunning)}>
+        {isRunning ? "Stop" : "Start"}
+      </button>
+      <button onClick={() => setTime(0)}>Reset</button>
+    </div>
+  );
 }
 
-export default App
+export default App;
